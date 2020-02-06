@@ -10,7 +10,7 @@ exports.getAllMemories = async (req, res) => {
     // sort('-occupation').
     // select('name occupation').
 
-    const memories = await Memory.find({}).limit(2);
+    const memories = await Memory.find({});
 
     // SEND RESPONSE
     res.status(200).json({
@@ -31,7 +31,6 @@ exports.getAllMemories = async (req, res) => {
 exports.getMemory = async (req, res) => {
   try {
     const memory = await Memory.findById(req.params.id);
-
     res.status(200).json({
       status: "success",
       data: {
@@ -87,7 +86,6 @@ exports.updateMemory = async (req, res) => {
 exports.deleteMemory = async (req, res) => {
   try {
     await Memory.findByIdAndDelete(req.params.id);
-
     res.status(204).json({
       status: "success",
       data: null
